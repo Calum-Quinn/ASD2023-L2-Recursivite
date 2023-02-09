@@ -1,4 +1,4 @@
-# ASD2022-L2-Recursivite
+# ASD-L2-Recursivite
 
 Editez ce fichier pour y indiquer le numéro et les noms de tous les membres de votre groupe.
 
