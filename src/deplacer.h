@@ -1,7 +1,7 @@
 #ifndef ASD2022_L2_RECURSIVITE_DEPLACER_H
 #define ASD2022_L2_RECURSIVITE_DEPLACER_H
 
-#include "pieces.h"
+#include "Carte.h"
 
 void tourner(Piece& piece);
 void deplacer(Piece& piece,unsigned position);

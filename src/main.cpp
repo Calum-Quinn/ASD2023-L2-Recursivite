@@ -4,9 +4,35 @@
 
 using namespace std;
 
+using Cartes = vector<Carte>;
+
 int main() {
 
-    cout << "1a 2a 4a 3a 5d 6a 7a 8a 9a" << endl;
-    tourner(PIECES.at(0));
+    Pieces pieces = PIECES;
 
+    //Vecteur contenant chaque pièce du puzzle
+    Cartes cartes;
+    cartes.reserve(PIECES.size());
+
+    //Création du plateau de jeu
+    for(size_t i = 0; i < PIECES.size(); ++i){
+        cartes.push_back(Carte (i + 1, PIECES[i]));
+        //cartes[i] = (Carte(i+1, PIECES[i]));
+    }
+
+//    for(size_t i = 0; i < 6; ++i){
+//        cartes[0].tourner();
+//        cout << cartes[0] << endl;
+//    }
+
+    for(Carte carte : cartes){
+        cout << carte << endl;
+    }
+
+    deplacer(cartes[0], cartes[1]);
+    cout << endl << endl;
+
+    for(Carte carte : cartes){
+        cout << carte << endl;
+    }
 }
