@@ -1,6 +1,6 @@
 # ASD-L2-Recursivite
 
-Labo_02_b :
+Labo_02_B :
 
 Dario Vasques
 Ewan Mariaux
