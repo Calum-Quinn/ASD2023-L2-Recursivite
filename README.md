@@ -3,7 +3,9 @@
 Labo_02_B :
 
 Dario Vasques
+
 Ewan Mariaux
+
 Calum Quinn
 
 Editez ce fichier pour y indiquer le numéro et les noms de tous les membres de votre groupe.
