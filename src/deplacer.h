@@ -3,7 +3,6 @@
 
 #include "Carte.h"
 
-void tourner(Piece& piece);
-void deplacer(Piece& piece,unsigned position);
+void deplacer(Carte& carte1,Carte& carte2);
 
 #endif //ASD2022_L2_RECURSIVITE_DEPLACER_H

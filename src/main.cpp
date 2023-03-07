@@ -1,6 +1,8 @@
 #include <iostream>
 #include "pieces.h"
 #include "deplacer.h"
+#include "Carte.h"
+#include "controle.h"
 
 using namespace std;
 
