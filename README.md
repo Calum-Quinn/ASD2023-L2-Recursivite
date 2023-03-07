@@ -1,6 +1,12 @@
 # ASD-L2-Recursivite
 
-Editez ce fichier pour y indiquer le numéro et les noms de tous les membres de votre groupe.
+Labo_02_B :
+
+Dario Vasques
+
+Ewan Mariaux
+
+Calum Quinn
 
 Lisez l'[énoncé](enonce).
 
