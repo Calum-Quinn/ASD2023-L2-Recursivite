@@ -4,10 +4,6 @@
 
 using namespace std;
 
-void tourner(Piece& piece) {
-    rotate(piece.begin(),piece.begin() + 1,piece.end());
-}
-
-void deplacer(Piece& piece,unsigned position) {
-
+void deplacer(Carte& carte1,Carte& carte2) {
+    swap(carte1, carte2);
 }
