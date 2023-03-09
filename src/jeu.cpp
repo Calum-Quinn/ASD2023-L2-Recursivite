@@ -55,8 +55,25 @@ vector<Carte> pasDefini(vector<Carte>& cartes, Carte& carte, unsigned pos) {
         case 8 : controler =GAUCHEHAUT;
         default: controler = RIEN;
     }
-    if (controler)
-        controle(cartes, carte, controler);
-    else
+    if (controler) {
+        //La carte correspond?
+        if (controle(cartes, carte, controler)) {
+            //Est-ce qu'elle est tout à la fin du plateau?
+            if (pos = 8) {
+                //Solution!
+                return cartes;
+            } else {
+                //Passer à la prochaine position
+                return pasDefini(cartes,cartes[carte.getPosition() + 1],pos + 1);
+            }
+        }
+        //La carte correspond pas
+        else {
+
+        }
+    }
+    //Pas besoin de controler la carte donc passe à la prochaine case
+    else {
         return pasDefini(cartes,cartes[carte.getPosition() + 1],pos);
+    }
 }
