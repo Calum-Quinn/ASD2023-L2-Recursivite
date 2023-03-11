@@ -16,6 +16,7 @@ using namespace std;
 
 Carte::Carte(const int id, Piece motifs) : id(id), position(id-1){
     this->rotation = 'a';
+    this->rot = 0;
     this->motifs = motifs;
     //this->position = size_t(id - 1);
 };
@@ -25,20 +26,27 @@ Carte::Carte(const Carte& autre) : position(autre.position){
 }
 
 void Carte::tourner(){
-    rotate(this->motifs.begin(),this->motifs.begin() + 1,this->motifs.end());
+//    rotate(this->motifs.begin(),this->motifs.begin() + 1,this->motifs.end());
+//
+//    if(this->rotation == 'd'){
+//        this->rotation = 'a';
+//    }else{
+//        ++this->rotation;
+//    }
+    //On augmente une valeur represantant la rotation de sorte à pouvoir réinitialiser le plateau
+    rot = ++rot % 4;
+}
 
-    if(this->rotation == 'd'){
-        this->rotation = 'a';
-    }else{
-        ++this->rotation;
-    }
+void Carte::reset() {
+    rot = 0;
+    position = unsigned (id);
 }
 
 Carte& Carte::operator= (const Carte& autre) {
     this->motifs = autre.motifs;
     this->rotation = autre.rotation;
+    this->rot = autre.rot;
     this->id = autre.id;
-    //this->position = autre.position;
 
     return *this;
 }

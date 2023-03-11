@@ -12,40 +12,41 @@ Compilateurs   : Apple clang version 14.0.0 (clang-1400.0.29.102) (Dario)
 
 using namespace std;
 
-bool controle(const vector<Carte>& cartes, Carte& carte, AControler controler) {
-    int decalage;
+bool controle(vector<Carte>& cartes, Carte& carte, AControler controler) {
 
     //Controle la carte à sa gauche
     if (controler == AControler::GAUCHE) {
-        if (!check(cartes, carte, controler, AGAUCHE, ADROITE))
+        if (!check(carte, cartes[carte.getPosition() - 1], AGAUCHE, ADROITE))
             return false;
     }
     //Controle la carte au dessus
     else if (controler == AControler::HAUT) {
-        if (!check(cartes, carte, controler, DESSUS, DESSOUS))
+        if (!check(carte, cartes[carte.getPosition() - 3], DESSUS, DESSOUS))
             return false;
     }
     //Controle les cartes à gauche et au dessus
     else if (controler == AControler::GAUCHEHAUT) {
-        if (!(check(cartes, carte, GAUCHE, AGAUCHE, ADROITE)
-              and check(cartes, carte, HAUT, DESSUS, DESSOUS)))
+        if (!(check(carte, cartes[carte.getPosition() - 1], AGAUCHE, ADROITE)
+              and check(carte, cartes[carte.getPosition() - 3], DESSUS, DESSOUS)))
             return false;
     }
     return true;
  }
 
-bool check(const std::vector<Carte>& cartes, Carte& carte, AControler controler, const int moi, const int lui) {
+//cartes[carte.getPosition() - (controler == 1 ? 1 : 3)]
+
+bool check(Carte& carte1, Carte& carte2, const int moi, const int lui) {
 
     int decalage;
 
     //Défini le décalage du motif correspondant
-    if (carte.getMotifs()[moi] % 2)
+    if ((carte1.getMotifs()[(moi + carte1.getRot()) % 4] % 2) != 0)
         decalage = 1;
     else
         decalage = -1;
 
     //Controle si le motif de la pièce correspond à l'autre
-    if (carte.getMotifs()[moi] != (cartes[carte.getPosition() - (controler == 1 ? 1 : 3)].getMotifs()[lui]) + decalage)
+    if (carte1.getMotifs()[(moi + carte1.getRot()) % 4] != (carte2.getMotifs()[(lui + carte2.getRot()) % 4] + decalage))
         return false;
 
     return true;

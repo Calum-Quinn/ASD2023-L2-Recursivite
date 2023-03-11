@@ -29,7 +29,7 @@ public:
 
     Carte& operator= (const Carte& autre);
     void tourner();
-
+    void reset();
 
 
     unsigned getId() const{
@@ -41,6 +41,9 @@ public:
     char getRotation() const{
         return rotation;
     }
+    int getRot() const {
+        return rot;
+    }
     Piece getMotifs() const{
         return motifs;
     }
@@ -48,8 +51,9 @@ public:
 
 private:
     unsigned id;
-    const size_t position;
+    size_t position;
     char rotation;
+    int rot;
     Piece motifs;
 };
 
