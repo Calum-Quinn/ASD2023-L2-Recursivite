@@ -30,50 +30,51 @@ AControler posAControle(unsigned posCartes){
 }
 
 
-void jouer(vector<Carte>& cartes, unsigned posCartes){
+void jouer(vector<Carte>& cartes, vector<int> positions, unsigned posCartes){
 
     if(posCartes < 9){
         cartes[posCartes].tourner();
         if(controle(cartes, cartes[posCartes], posAControle(posCartes))){
-            jouer(cartes, posCartes + 1);
+            jouer(cartes, positions, posCartes + 1);
         }
 
-        jouer(cartes, posCartes + 1);
+        jouer(cartes, positions, posCartes + 1);
     }
 }
 
-vector<Carte> pasDefini(vector<Carte>& cartes, Carte& carte, unsigned pos) {
+vector<Carte> pasDefini(vector<Carte>& cartes, Carte& carte, vector<unsigned> positions, unsigned pos) {
+    vector<unsigned> posSub(positions.begin() + 1,positions.end());
     AControler controler;
     switch(pos){
         case 1 :
-        case 2 : controler = GAUCHE;
+        case 2 : controler = GAUCHE; break;
         case 3 :
-        case 6 : controler = HAUT;
+        case 6 : controler = HAUT; break;
         case 4 :
         case 5 :
         case 7 :
-        case 8 : controler =GAUCHEHAUT;
+        case 8 : controler =GAUCHEHAUT; break;
         default: controler = RIEN;
     }
     if (controler) {
         //La carte correspond?
         if (controle(cartes, carte, controler)) {
             //Est-ce qu'elle est tout à la fin du plateau?
-            if (pos = 8) {
+            if (pos == 8) {
                 //Solution!
                 return cartes;
             } else {
                 //Passer à la prochaine position
-                return pasDefini(cartes,cartes[carte.getPosition() + 1],pos + 1);
+                return pasDefini(cartes,cartes[carte.getPosition() + 1],posSub,pos + 1);
             }
         }
         //La carte correspond pas
         else {
-
+            carte.tourner();
         }
     }
     //Pas besoin de controler la carte donc passe à la prochaine case
     else {
-        return pasDefini(cartes,cartes[carte.getPosition() + 1],pos);
+        return pasDefini(cartes,cartes[carte.getPosition() + 1],posSub,pos + 1);
     }
 }

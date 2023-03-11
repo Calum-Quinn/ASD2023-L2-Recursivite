@@ -33,8 +33,6 @@ bool controle(vector<Carte>& cartes, Carte& carte, AControler controler) {
     return true;
  }
 
-//cartes[carte.getPosition() - (controler == 1 ? 1 : 3)]
-
 bool check(Carte& carte1, Carte& carte2, const int moi, const int lui) {
 
     int decalage;

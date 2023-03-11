@@ -13,6 +13,7 @@ Compilateurs   : Apple clang version 14.0.0 (clang-1400.0.29.102) (Dario)
 #include "deplacer.h"
 #include "Carte.h"
 #include "controle.h"
+#include "jeu.h"
 
 using namespace std;
 
@@ -25,6 +26,7 @@ int main() {
     //Vecteur contenant chaque pièce du puzzle
     Cartes cartes;
     cartes.reserve(PIECES.size());
+    vector<unsigned> positions = {1,2,3,4,5,6,7,8,9};
 
     //Création du plateau de jeu
     for(size_t i = 0; i < PIECES.size(); ++i){
@@ -53,4 +55,12 @@ int main() {
 //        cout << carte << endl;
 //    }
     cout << boolalpha << controle(cartes,cartes[1],GAUCHE);
+
+    vector<Carte> resultat =  pasDefini(cartes,cartes[0],positions,0);
+
+    for(Carte carte : resultat){
+        cout << carte << endl;
+    }
+
+    return 0;
 }

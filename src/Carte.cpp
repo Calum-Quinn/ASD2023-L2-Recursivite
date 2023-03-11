@@ -14,32 +14,26 @@ Compilateurs   : Apple clang version 14.0.0 (clang-1400.0.29.102) (Dario)
 
 using namespace std;
 
-Carte::Carte(const int id, Piece motifs) : id(id), position(id-1){
+Carte::Carte(const int id, Piece motifs) {
+    this->id = id;
     this->rotation = 'a';
     this->rot = 0;
     this->motifs = motifs;
-    //this->position = size_t(id - 1);
-};
+    this->position = id - 1;
+}
 
 Carte::Carte(const Carte& autre) : position(autre.position){
     *this = autre;
 }
 
 void Carte::tourner(){
-//    rotate(this->motifs.begin(),this->motifs.begin() + 1,this->motifs.end());
-//
-//    if(this->rotation == 'd'){
-//        this->rotation = 'a';
-//    }else{
-//        ++this->rotation;
-//    }
     //On augmente une valeur represantant la rotation de sorte à pouvoir réinitialiser le plateau
     rot = ++rot % 4;
 }
 
 void Carte::reset() {
     rot = 0;
-    position = unsigned (id);
+    position = id - 1;
 }
 
 Carte& Carte::operator= (const Carte& autre) {
