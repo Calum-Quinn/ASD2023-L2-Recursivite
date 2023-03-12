@@ -34,10 +34,10 @@ int main() {
         //cartes[i] = (Carte(i+1, PIECES[i]));
     }
 
-    cartes[0].tourner();
-    cartes[0].tourner();
-    cartes[0].tourner();
-    cartes[1].tourner();
+//    cartes[0].tourner();
+//    cartes[0].tourner();
+//    cartes[0].tourner();
+//    cartes[1].tourner();
 
 //    for(size_t i = 0; i < 6; ++i){
 //        cartes[0].tourner();
@@ -54,13 +54,13 @@ int main() {
 //    for(Carte carte : cartes){
 //        cout << carte << endl;
 //    }
-    cout << boolalpha << controle(cartes,cartes[1],GAUCHE);
-
-    vector<Carte> resultat =  pasDefini(cartes,cartes[0],positions,0);
-
-    for(Carte carte : resultat){
-        cout << carte << endl;
-    }
+//    cout << boolalpha << controle(cartes,cartes[1],GAUCHE);
+//
+//    vector<Carte> resultat =  pasDefini(cartes,cartes[0],positions,0);
+//
+//    for(Carte carte : resultat){
+//        cout << carte << endl;
+//    }
 
     return 0;
 }

@@ -19,6 +19,7 @@ Carte::Carte(const int id, Piece motifs) {
     this->rotation = 'a';
     this->rot = 0;
     this->motifs = motifs;
+//    this->position = 9;
     this->position = id - 1;
 }
 

@@ -16,6 +16,9 @@ Compilateurs   : Apple clang version 14.0.0 (clang-1400.0.29.102) (Dario)
 
 void jouer(std::vector<Carte>& cartes, std::vector<int> positions, unsigned posCartes);
 
-std::vector<Carte> pasDefini(std::vector<Carte>& cartes, Carte& carte, std::vector<unsigned> positions, unsigned pos);
+void recursif(std::vector<Carte> cartes, Carte carte, std::vector<std::vector<Carte>>& solutions);
+
+
+//std::vector<Carte> pasDefini(std::vector<Carte>& cartes, Carte& carte, std::vector<unsigned> positions, unsigned pos);
 
 #endif //ASD2022_L2_RECURSIVITE_JEU_H
