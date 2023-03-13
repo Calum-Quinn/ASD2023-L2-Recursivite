@@ -41,8 +41,10 @@ AControler posAControle(unsigned posCartes){
 //    }
 //}
 
-void recursif(std::vector<Carte> cartes, Carte carte, std::vector<std::vector<Carte>>& solutions) {
+void recursif(vector<Carte>& cartes, vector<vector<Carte>>& solutions, size_t position, size_t posVoulu) {
 
+
+    static int i = 0;
 
     //Soustraire les cartes déjà placées, selon leur position, du vecteur de cartes qu'on passe en paramètres
 
@@ -62,20 +64,15 @@ void recursif(std::vector<Carte> cartes, Carte carte, std::vector<std::vector<Ca
     //La carte peut aller là
     if (controle(cartes, carte, controler)) {
         //La carte est à la dernière position
-        if() {
+        if(position == cartes.size() - 1) {
             //Ajouter le vecteur au vecteur de solutions
             solutions.push_back(cartes);
         }
         //La carte n'est pas à la dernière position
         else {
-            //Il reste des cartes a essayer
-            if() {
-                //Passer à la prochaine position
-            }
-            //Il ne reste plus de cartes a essayer
-            else {
-                //Retourner à la position d'avant et prendre la prochaine carte
-            }
+            //Passer à la prochaine position
+            recursif(cartes, solutions, position + 1, posVoulu);
+
         }
     }
     //La carte ne peut pas aller là
@@ -83,8 +80,9 @@ void recursif(std::vector<Carte> cartes, Carte carte, std::vector<std::vector<Ca
         //Carte tourné 4 fois
         if(carte.getRot() == 3) {
             //Il reste des cartes
-            if() {
+            if(position != cartes.size() - 1) {
                 //Prendre la prochaine carte et réessayer
+                recursif(cartes, solutions, position + 1, posVoulu);
             }
             //Il ne reste plus de cartes
             else{
@@ -99,6 +97,29 @@ void recursif(std::vector<Carte> cartes, Carte carte, std::vector<std::vector<Ca
             //Recontroler
         }
     }
+
+
+    //Si la position qu'on veut changer c'est la première
+    if(cartes[position].getPosition() == 0){
+        //Reset pour passer toutes les cartes en première position
+
+        ++i;
+        for(Carte carte : cartes){
+            if(carte.getId() == i){
+                deplacer(cartes[0], carte);
+            }
+        }
+        //find foncteur sur l'id??
+        deplacer(cartes[0], cartes[i]);
+        recursif(cartes, solutions, position + 1, posVoulu);
+    }else if(cartes[position].getPosition() != 9){
+        //cartes[position].tourner();
+        recursif(cartes, solutions, position + 1, posVoulu);
+    }else{
+
+    }
+
+
 }
 
 
@@ -144,4 +165,3 @@ void recursif(std::vector<Carte> cartes, Carte carte, std::vector<std::vector<Ca
 //    else {
 //        return pasDefini(cartes,cartes[carte.getPosition() + 1],posSub,pos + 1);
 //    }
-//}
