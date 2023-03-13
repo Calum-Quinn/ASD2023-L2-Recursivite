@@ -20,7 +20,7 @@ const unsigned  DESSUS = 0,
                 DESSOUS = 2,
                 AGAUCHE = 3;
 
-bool controle(std::vector<Carte>& cartes, Carte& carte, AControler controler);
+bool controle(std::vector<Carte>& cartes, size_t posMoi, size_t posLui, AControler controler);
 
 bool check(Carte& carte1, Carte& carte2, const int moi, const int lui);
 

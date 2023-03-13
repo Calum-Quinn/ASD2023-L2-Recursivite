@@ -16,7 +16,7 @@ Compilateurs   : Apple clang version 14.0.0 (clang-1400.0.29.102) (Dario)
 
 void jouer(std::vector<Carte>& cartes, std::vector<int> positions, unsigned posCartes);
 
-void recursif(std::vector<Carte> cartes, Carte carte, std::vector<std::vector<Carte>>& solutions);
+void recursif(std::vector<Carte>& cartes, std::vector<std::vector<Carte>>& solutions, size_t position,size_t posVoulu);
 
 
 //std::vector<Carte> pasDefini(std::vector<Carte>& cartes, Carte& carte, std::vector<unsigned> positions, unsigned pos);

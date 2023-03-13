@@ -12,22 +12,22 @@ Compilateurs   : Apple clang version 14.0.0 (clang-1400.0.29.102) (Dario)
 
 using namespace std;
 
-bool controle(vector<Carte>& cartes, Carte& carte, AControler controler) {
+bool controle(vector<Carte>& cartes, size_t posMoi, size_t posLui, AControler controler) {
 
     //Controle la carte à sa gauche
     if (controler == AControler::GAUCHE) {
-        if (!check(carte, cartes[carte.getPosition() - 1], AGAUCHE, ADROITE))
+        if (!check(cartes[posMoi], cartes[posLui], AGAUCHE, ADROITE))
             return false;
     }
     //Controle la carte au dessus
     else if (controler == AControler::HAUT) {
-        if (!check(carte, cartes[carte.getPosition() - 3], DESSUS, DESSOUS))
+        if (!check(cartes[posMoi], cartes[posLui], DESSUS, DESSOUS))
             return false;
     }
     //Controle les cartes à gauche et au dessus
     else if (controler == AControler::GAUCHEHAUT) {
-        if (!(check(carte, cartes[carte.getPosition() - 1], AGAUCHE, ADROITE)
-              and check(carte, cartes[carte.getPosition() - 3], DESSUS, DESSOUS)))
+        if (!(check(cartes[posMoi], cartes[posLui], AGAUCHE, ADROITE)
+              and check(cartes[posMoi], cartes[posLui], DESSUS, DESSOUS)))
             return false;
     }
     return true;

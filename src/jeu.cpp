@@ -14,7 +14,6 @@ Compilateurs   : Apple clang version 14.0.0 (clang-1400.0.29.102) (Dario)
 
 using namespace std;
 
-
 AControler posAControle(unsigned posCartes){
     switch(posCartes){
         case 1 :
@@ -30,17 +29,17 @@ AControler posAControle(unsigned posCartes){
 }
 
 
-void jouer(vector<Carte>& cartes, vector<int> positions, unsigned posCartes){
-
-    if(posCartes < 9){
-        cartes[posCartes].tourner();
-        if(controle(cartes, cartes[posCartes], posAControle(posCartes))){
-            jouer(cartes, positions, posCartes + 1);
-        }
-
-        jouer(cartes, positions, posCartes + 1);
-    }
-}
+//void jouer(vector<Carte>& cartes, vector<int> positions, unsigned posCartes){
+//
+//    if(posCartes < 9){
+//        cartes[posCartes].tourner();
+//        if(controle(cartes, cartes[posCartes], posAControle(posCartes))){
+//            jouer(cartes, positions, posCartes + 1);
+//        }
+//
+//        jouer(cartes, positions, posCartes + 1);
+//    }
+//}
 
 void recursif(std::vector<Carte> cartes, Carte carte, std::vector<std::vector<Carte>>& solutions) {
 
@@ -90,9 +89,10 @@ void recursif(std::vector<Carte> cartes, Carte carte, std::vector<std::vector<Ca
             //Il ne reste plus de cartes
             else{
                 //Retourner à la position d'avant et prendre la prochaine carte
+
             }
         }
-        //Carte pas tourné 4 fois
+        //Carte pas tourné 3 fois
         else{
             //Tourner la carte
             carte.tourner();

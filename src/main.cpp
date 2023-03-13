@@ -26,7 +26,7 @@ int main() {
     //Vecteur contenant chaque pièce du puzzle
     Cartes cartes;
     cartes.reserve(PIECES.size());
-    vector<unsigned> positions = {1,2,3,4,5,6,7,8,9};
+    vector<vector<Carte>> solutions;
 
     //Création du plateau de jeu
     for(size_t i = 0; i < PIECES.size(); ++i){
@@ -34,10 +34,10 @@ int main() {
         //cartes[i] = (Carte(i+1, PIECES[i]));
     }
 
-//    cartes[0].tourner();
-//    cartes[0].tourner();
-//    cartes[0].tourner();
-//    cartes[1].tourner();
+    cartes[3].tourner();
+    cartes[3].tourner();
+
+    //deplacer(cartes[3],cartes[1]);
 
 //    for(size_t i = 0; i < 6; ++i){
 //        cartes[0].tourner();
@@ -47,6 +47,8 @@ int main() {
     for(Carte carte : cartes){
         cout << carte << endl;
     }
+
+    cout << controle(cartes,3,0,GAUCHE) << endl;
 //
 //    deplacer(cartes[0], cartes[1]);
 //    cout << endl << endl;
