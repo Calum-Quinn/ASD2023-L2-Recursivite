@@ -50,19 +50,27 @@ void recursif(vector<Carte>& cartes, vector<vector<Carte>>& solutions, size_t po
 
 
     AControler controler;
-    switch(carte.getPosition()){
+    switch(posVoulu) {
         case 1 :
-        case 2 : controler = GAUCHE; break;
+        case 2 :
+            controler = GAUCHE;
+            break;
         case 3 :
-        case 6 : controler = HAUT; break;
+        case 6 :
+            controler = HAUT;
+            break;
         case 4 :
         case 5 :
         case 7 :
-        case 8 : controler =GAUCHEHAUT; break;
-        default: controler = RIEN;
+        case 8 :
+            controler = GAUCHEHAUT;
+            break;
+        default:
+            controler = RIEN;
     }
+
     //La carte peut aller là
-    if (controle(cartes, carte, controler)) {
+    if (controle(cartes, position, posVoulu, controler)) {
         //La carte est à la dernière position
         if(position == cartes.size() - 1) {
             //Ajouter le vecteur au vecteur de solutions
@@ -77,8 +85,8 @@ void recursif(vector<Carte>& cartes, vector<vector<Carte>>& solutions, size_t po
     }
     //La carte ne peut pas aller là
     else {
-        //Carte tourné 4 fois
-        if(carte.getRot() == 3) {
+        //Carte tourné 3 fois
+        if(cartes[position].getRot() == 3) {
             //Il reste des cartes
             if(position != cartes.size() - 1) {
                 //Prendre la prochaine carte et réessayer
@@ -93,7 +101,8 @@ void recursif(vector<Carte>& cartes, vector<vector<Carte>>& solutions, size_t po
         //Carte pas tourné 3 fois
         else{
             //Tourner la carte
-            carte.tourner();
+            cartes[position].tourner();
+            recursif(cartes, solutions, position, posVoulu);
             //Recontroler
         }
     }
