@@ -159,7 +159,7 @@ void recursif_new(vector<Carte>& cartes, vector<vector<Carte>>& solutions, size_
 
    if(pos < 9){
       //La carte peut aller là
-      if (controle(cartes, pos, posVoulu, controler)) {
+      if (controle(cartes, pos, posVoulu, controler)){
          //Mets la carte
          cout << "Deplace" << endl;
          deplacer(cartes[posVoulu], cartes[pos]);
@@ -201,12 +201,10 @@ void recursif_new(vector<Carte>& cartes, vector<vector<Carte>>& solutions, size_
             //Ressaye de la mettre à la même position
             recursif_new(cartes, solutions, pos, posVoulu);
 
-
-
          //Essaye avec la carte suivante
-         recursif_new(cartes, solutions, pos + 1, posVoulu + 1);
+         recursif_new(cartes, solutions, pos + 1, posVoulu);
          //Si aucune carte passe, il retente avec celle à la dernière pos bonne
-         recursif_new(cartes, solutions, solutions.end()->getPosition() + 1, solutions.end()->getPosition());
+         recursif_new(cartes, solutions, posVoulu + 1, posVoulu - 1);
       }
    }
 }
