@@ -134,7 +134,49 @@ void recursif(vector<Carte>& cartes, vector<vector<Carte>>& solutions, size_t po
 
 
 
+void recursif_new(vector<Carte>& cartes, vector<Carte>& solutions, size_t pos, size_t posVoulu){
+   AControler controler;
+   switch(posVoulu) {
+      case 1 :
+      case 2 :
+         controler = GAUCHE;
+         break;
+      case 3 :
+      case 6 :
+         controler = HAUT;
+         break;
+      case 4 :
+      case 5 :
+      case 7 :
+      case 8 :
+         controler = GAUCHEHAUT;
+         break;
+      default:
+         controler = RIEN;
+   }
 
+   if(pos < 9 or solutions.size() < 9){
+      //La carte peut aller là
+      if (controle(cartes, pos, posVoulu, controler)) {
+         //Mets la carte
+         deplacer(cartes[posVoulu], cartes[pos]);
+         //Ajoute la carte dans le vecteur
+         solutions.push_back(cartes[pos]);
+         //Continue avec la carte suivante
+         recursif_new(cartes, solutions, pos + 1, posVoulu + 1);
+      } else{
+         //Tourne la carte
+         cartes[pos].tourner();
+         if(cartes[pos].getRotation() != 4)
+            //Ressaye de la mettre à la même position
+            recursif_new(cartes, solutions, pos, posVoulu);
+         //Essaye avec la carte suivante
+         recursif_new(cartes, solutions, pos + 1, posVoulu + 1);
+         //Si aucune carte passe, il retente avec celle à la dernière pos bonne
+         recursif_new(cartes, solutions, solutions.end()->getPosition() + 1, solutions.end()->getPosition());
+      }
+   }
+}
 
 
 
