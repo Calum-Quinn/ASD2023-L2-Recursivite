@@ -157,10 +157,11 @@ void recursif_new(vector<Carte>& cartes, vector<vector<Carte>>& solutions, size_
          controler = RIEN;
    }
 
-   if(pos < 9 or solutions.size() < 9){
+   if(pos < 9){
       //La carte peut aller là
       if (controle(cartes, pos, posVoulu, controler)) {
          //Mets la carte
+         cout << "Deplace" << endl;
          deplacer(cartes[posVoulu], cartes[pos]);
 
          if(pos == cartes.size() - 1){

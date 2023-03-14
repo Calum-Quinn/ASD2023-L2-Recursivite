@@ -16,18 +16,18 @@ bool controle(vector<Carte>& cartes, size_t posMoi, size_t posLui, AControler co
 
     //Controle la carte à sa gauche
     if (controler == AControler::GAUCHE) {
-        if (!check(cartes[posMoi], cartes[posLui], AGAUCHE, ADROITE))
+        if (!check(cartes[posMoi], cartes[posLui - 1], AGAUCHE, ADROITE))
             return false;
     }
     //Controle la carte au dessus
     else if (controler == AControler::HAUT) {
-        if (!check(cartes[posMoi], cartes[posLui], DESSUS, DESSOUS))
+        if (!check(cartes[posMoi], cartes[posLui - 3], DESSUS, DESSOUS))
             return false;
     }
     //Controle les cartes à gauche et au dessus
     else if (controler == AControler::GAUCHEHAUT) {
-        if (!(check(cartes[posMoi], cartes[posLui], AGAUCHE, ADROITE)
-              and check(cartes[posMoi], cartes[posLui], DESSUS, DESSOUS)))
+        if (!(check(cartes[posMoi], cartes[posLui - 1], AGAUCHE, ADROITE)
+              and check(cartes[posMoi], cartes[posLui - 3], DESSUS, DESSOUS)))
             return false;
     }
     return true;
@@ -47,5 +47,6 @@ bool check(Carte& carte1, Carte& carte2, const int moi, const int lui) {
     if (carte1.getMotifs()[(moi + carte1.getRot()) % 4] != (carte2.getMotifs()[(lui + carte2.getRot()) % 4] + decalage))
         return false;
 
+    cout << carte1.getId() << " rot" << carte1.getRot() << " avec " << carte2.getId() << " rot" << carte2.getRot() << endl;
     return true;
 }
