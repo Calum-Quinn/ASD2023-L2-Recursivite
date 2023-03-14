@@ -41,7 +41,7 @@ AControler posAControle(unsigned posCartes){
 //    }
 //}
 
-void recursif(vector<Carte>& cartes, vector<vector<Carte>>& solutions, size_t position, size_t posVoulu) {
+/*void recursif(vector<Carte>& cartes, vector<vector<Carte>>& solutions, size_t position, size_t posVoulu) {
 
 
     static int i = 0;
@@ -119,22 +119,24 @@ void recursif(vector<Carte>& cartes, vector<vector<Carte>>& solutions, size_t po
             }
         }
         //find foncteur sur l'id??
-        deplacer(cartes[0], cartes[i]);
+        //deplacer(cartes[0], cartes[i]);
         recursif(cartes, solutions, position + 1, posVoulu);
     }else if(cartes[position].getPosition() != 9){
         //cartes[position].tourner();
         recursif(cartes, solutions, position + 1, posVoulu);
     }else{
-
+        solutions.push_back(cartes);
     }
 
 
-}
+}*/
 
 
 
 
-void recursif_new(vector<Carte>& cartes, vector<Carte>& solutions, size_t pos, size_t posVoulu){
+void recursif_new(vector<Carte>& cartes, vector<vector<Carte>>& solutions, size_t pos, size_t posVoulu){
+    static int i = 0;
+
    AControler controler;
    switch(posVoulu) {
       case 1 :
@@ -160,10 +162,33 @@ void recursif_new(vector<Carte>& cartes, vector<Carte>& solutions, size_t pos, s
       if (controle(cartes, pos, posVoulu, controler)) {
          //Mets la carte
          deplacer(cartes[posVoulu], cartes[pos]);
-         //Ajoute la carte dans le vecteur
-         solutions.push_back(cartes[pos]);
+
+         if(pos == cartes.size() - 1){
+             //Ajout du vecteur de cartes dans le vecteur
+             solutions.push_back(cartes);
+         }
          //Continue avec la carte suivante
-         recursif_new(cartes, solutions, pos + 1, posVoulu + 1);
+         recursif_new(cartes, solutions, posVoulu + 1, posVoulu + 1);
+
+         if (!posVoulu and cartes[pos].getRot() != 3){
+             cartes[pos].tourner();
+             recursif_new(cartes, solutions, pos, posVoulu);
+         }else if (!posVoulu and cartes[pos].getRot() == 3){
+             cartes[pos].tourner();
+
+             ++i;
+             for(Carte carte : cartes){
+                 if(carte.getId() == i){
+                     deplacer(cartes[0], carte);
+                 }
+             }
+             recursif_new(cartes, solutions, pos, posVoulu);
+
+             //Condition d'arrêt
+             if (cartes[0].getId() == 9) {
+                 recursif_new(cartes, solutions, 10, 10);
+             }
+         }
       } else{
          //Tourne la carte
          cartes[pos].tourner();
@@ -171,7 +196,7 @@ void recursif_new(vector<Carte>& cartes, vector<Carte>& solutions, size_t pos, s
 
          //     ATTENTION     //
 
-         if(cartes[pos].getRotation() != 4)
+         if(cartes[pos].getRot() != 0)
             //Ressaye de la mettre à la même position
             recursif_new(cartes, solutions, pos, posVoulu);
 

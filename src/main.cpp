@@ -34,8 +34,7 @@ int main() {
         //cartes[i] = (Carte(i+1, PIECES[i]));
     }
 
-    cartes[3].tourner();
-    cartes[3].tourner();
+
 
     //deplacer(cartes[3],cartes[1]);
 
@@ -44,11 +43,20 @@ int main() {
 //        cout << cartes[0] << endl;
 //    }
 
-    for(Carte carte : cartes){
-        cout << carte << endl;
+
+    recursif_new(cartes,solutions,0,0);
+
+    for (vector<Carte> vCarte : solutions){
+        for(Carte carte : vCarte){
+            cout << carte << endl;
+        }
     }
 
-    cout << controle(cartes,3,0,GAUCHE) << endl;
+/*    for(Carte carte : cartes){
+        cout << carte << endl;
+    }*/
+
+   // cout << controle(cartes,3,0,GAUCHE) << endl;
 //
 //    deplacer(cartes[0], cartes[1]);
 //    cout << endl << endl;
