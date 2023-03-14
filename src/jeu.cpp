@@ -167,9 +167,16 @@ void recursif_new(vector<Carte>& cartes, vector<Carte>& solutions, size_t pos, s
       } else{
          //Tourne la carte
          cartes[pos].tourner();
+
+
+         //     ATTENTION     //
+
          if(cartes[pos].getRotation() != 4)
             //Ressaye de la mettre à la même position
             recursif_new(cartes, solutions, pos, posVoulu);
+
+
+
          //Essaye avec la carte suivante
          recursif_new(cartes, solutions, pos + 1, posVoulu + 1);
          //Si aucune carte passe, il retente avec celle à la dernière pos bonne
