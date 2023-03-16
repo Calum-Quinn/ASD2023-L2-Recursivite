@@ -127,12 +127,7 @@ AControler posAControle(unsigned posCartes){
     }else{
         solutions.push_back(cartes);
     }
-
-
 }*/
-
-
-
 
 void recursif_new(vector<Carte>& cartes, vector<vector<Carte>>& solutions, size_t pos, size_t posVoulu){
     static int i = 0;
@@ -211,6 +206,48 @@ void recursif_new(vector<Carte>& cartes, vector<vector<Carte>>& solutions, size_
 }
 
 
+void algo_rec(vector<Carte>& cartes, size_t n) {
+   AControler controler;
+   switch(n) {
+      case 1 :
+      case 2 :
+         controler = GAUCHE;
+         break;
+      case 3 :
+      case 6 :
+         controler = HAUT;
+         break;
+      case 4 :
+      case 5 :
+      case 7 :
+      case 8 :
+         controler = GAUCHEHAUT;
+         break;
+      default:
+         controler = RIEN;
+   }
+
+   for(size_t i = 0; i < NB_ROTATIONS; ++i) {
+      cartes[n].tourner();
+
+      static unsigned listeAppels;
+
+      if (n <= 1) {
+         cout << ++listeAppels << endl;
+      } else {
+         algo_rec(cartes, n - 1);
+
+         for (size_t i = 0; i < n - 1; ++i) {
+            if (n % 2)  // impair
+               swap(cartes[1], cartes[n - 1]);
+            else  // pair
+               swap(cartes[i], cartes[n - 1]);
+
+            algo_rec(cartes, n - 1);
+         }
+      }
+   }
+}
 
 
 //vector<Carte> pasDefini(vector<Carte>& cartes, Carte& carte, vector<unsigned> positions, unsigned pos) {
