@@ -36,7 +36,7 @@ int main() {
         //cartes[i] = (Carte(i+1, PIECES[i]));
     }
 
-/*    for(size_t i = 0; i < 4; ++i){
+/*    for(size_t i = 0; i < 3; ++i){
         cartes.push_back(Carte ((int)(i + 1), PIECES[i]));
         //cartes[i] = (Carte(i+1, PIECES[i]));
     }*/
