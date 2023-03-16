@@ -47,6 +47,6 @@ bool check(Carte& carte1, Carte& carte2, const int moi, const int lui) {
     if (carte1.getMotifs()[(moi + carte1.getRot()) % 4] != (carte2.getMotifs()[(lui + carte2.getRot()) % 4] + decalage))
         return false;
 
-//    cout << carte1.getId() << " rot" << carte1.getRot() << " avec " << carte2.getId() << " rot" << carte2.getRot() << endl;
+    cout << carte1.getId() << " rot" << carte1.getRot() << " avec " << carte2.getId() << " rot" << carte2.getRot() << endl;
     return true;
 }

@@ -161,39 +161,34 @@ void recursif_new(vector<Carte>& cartes, vector<vector<Carte>>& solutions, size_
       //La carte peut aller là
       if (controle(cartes, pos, posVoulu, controler)){
          //Mets la carte
-//         cout << "Deplace" << endl;
+         //cout << "Deplace" << endl;
          deplacer(cartes[posVoulu], cartes[pos]);
 
-         if(posVoulu == cartes.size() - 1){
+         //if(pos == cartes.size() - 1){ test
+          if(posVoulu == cartes.size() - 1){
              //Ajout du vecteur de cartes dans le vecteur
              solutions.push_back(cartes);
          }
-         else {
-             //Continue avec la carte suivante
-             recursif_new(cartes, solutions, posVoulu + 1, posVoulu + 1);
+         //Continue avec la carte suivante
+         recursif_new(cartes, solutions, posVoulu + 1, posVoulu + 1);
 
-             //Si on regarde la première position et que la carte n'a pas été tourné 3 fois
-             if (!posVoulu and cartes[pos].getRot() != 3){
-                 cartes[pos].tourner();
-                 recursif_new(cartes, solutions, pos, posVoulu);
+         if (!posVoulu and cartes[pos].getRot() != 3){
+             cartes[pos].tourner();
+             recursif_new(cartes, solutions, pos, posVoulu);
+         }else if (!posVoulu and cartes[pos].getRot() == 3){
+             cartes[pos].tourner();
+
+             ++i;
+             for(Carte carte : cartes){
+                 if(carte.getId() == i){
+                     deplacer(cartes[0], carte);
+                 }
              }
-             //Si on regarde la première position et que la carte a été tourné 3 fois
-             else if (!posVoulu and cartes[pos].getRot() == 3){
-                 cartes[pos].tourner();
+             recursif_new(cartes, solutions, pos, posVoulu);
 
-                 //Remplacer la première position par la carte avec le prochain ID
-                 ++i;
-                 for(Carte carte : cartes){
-                     if(carte.getId() == i){
-                         deplacer(cartes[0], carte);
-                     }
-                 }
-                 recursif_new(cartes, solutions, pos, posVoulu);
-
-                 //Condition d'arrêt
-                 if (cartes[0].getId() == 9) {
-
-                 }
+             //Condition d'arrêt
+             if (cartes[0].getId() == 9) {
+                 recursif_new(cartes, solutions, 10, 10);
              }
          }
       } else{
