@@ -22,6 +22,6 @@ const unsigned  DESSUS = 0,
 
 bool controle(std::vector<Carte>& cartes, size_t posMoi, size_t posLui, AControler controler);
 
-bool check(Carte& carte1, Carte& carte2, const int moi, const int lui);
+bool check(Carte& carte1, Carte& carte2,  const int moi,  const int lui);
 
 #endif //ASD2022_L2_RECURSIVITE_CONTROLE_H
