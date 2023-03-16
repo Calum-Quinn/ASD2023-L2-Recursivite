@@ -129,89 +129,89 @@ AControler posAControle(unsigned posCartes){
     }
 }*/
 
-void recursif_new(vector<Carte>& cartes, vector<vector<Carte>>& solutions, size_t pos, size_t posVoulu){
-    static int i = 0;
-
-   AControler controler;
-   switch(posVoulu) {
-      case 1 :
-      case 2 :
-         controler = GAUCHE;
-         break;
-      case 3 :
-      case 6 :
-         controler = HAUT;
-         break;
-      case 4 :
-      case 5 :
-      case 7 :
-      case 8 :
-         controler = GAUCHEHAUT;
-         break;
-      default:
-         controler = RIEN;
-   }
-
-   if(pos < 9){
-      //La carte peut aller là
-      if (controle(cartes, pos, posVoulu, controler)){
-         //Mets la carte
-         //cout << "Deplace" << endl;
-         deplacer(cartes[posVoulu], cartes[pos]);
-
-         for (Carte& carte : cartes){
-                 cout << carte << endl;
-         }
-         cout << endl;
-
-         //if(pos == cartes.size() - 1){ test
-          if(posVoulu == cartes.size() - 1){
-             //Ajout du vecteur de cartes dans le vecteur
-             solutions.push_back(cartes);
-         }else{
-              recursif_new(cartes, solutions, posVoulu + 1, posVoulu + 1);
-
-                //Continue avec la carte suivante
-
-
-             if (!posVoulu and cartes[pos].getRot() != 3){
-                 cartes[pos].tourner();
-                 recursif_new(cartes, solutions, pos, posVoulu);
-             }else if (!posVoulu and cartes[pos].getRot() == 3) {
-                 cartes[pos].tourner();
-
-                 ++i;
-                 for (Carte carte: cartes) {
-                     if (carte.getId() == i) {
-                         deplacer(cartes[0], carte);
-                     }
-                 }
-                 recursif_new(cartes, solutions, pos, posVoulu);
-
-                 //Condition d'arrêt
-                 if (cartes[0].getId() == 9) {
-                     recursif_new(cartes, solutions, 10, 10);
-                 }
-             }
-         }
-      } else{
-         //Tourne la carte
-         cartes[pos].tourner();
-
-
-         //     ATTENTION     //
-
-         if(cartes[pos].getRot() != 0)
-            //Ressaye de la mettre à la même position
-            recursif_new(cartes, solutions, pos, posVoulu);
-
-         //Essaye avec la carte suivante
-         recursif_new(cartes, solutions, pos + 1, posVoulu);
-         //Si aucune carte passe, il retente avec celle à la dernière pos bonne
-         recursif_new(cartes, solutions, posVoulu + 1, posVoulu - 1);
-      }
-   }
-}
+//void recursif_new(vector<Carte>& cartes, vector<vector<Carte>>& solutions, size_t pos, size_t posVoulu){
+//    static int i = 0;
+//
+//   AControler controler;
+//   switch(posVoulu) {
+//      case 1 :
+//      case 2 :
+//         controler = GAUCHE;
+//         break;
+//      case 3 :
+//      case 6 :
+//         controler = HAUT;
+//         break;
+//      case 4 :
+//      case 5 :
+//      case 7 :
+//      case 8 :
+//         controler = GAUCHEHAUT;
+//         break;
+//      default:
+//         controler = RIEN;
+//   }
+//
+//   if(pos < 9){
+//      //La carte peut aller là
+//      if (controle(cartes, pos, posVoulu, controler)){
+//         //Mets la carte
+//         //cout << "Deplace" << endl;
+//         deplacer(cartes[posVoulu], cartes[pos]);
+//
+//         for (Carte& carte : cartes){
+//                 cout << carte << endl;
+//         }
+//         cout << endl;
+//
+//         //if(pos == cartes.size() - 1){ test
+//          if(posVoulu == cartes.size() - 1){
+//             //Ajout du vecteur de cartes dans le vecteur
+//             solutions.push_back(cartes);
+//         }else{
+//              recursif_new(cartes, solutions, posVoulu + 1, posVoulu + 1);
+//
+//                //Continue avec la carte suivante
+//
+//
+//             if (!posVoulu and cartes[pos].getRot() != 3){
+//                 cartes[pos].tourner();
+//                 recursif_new(cartes, solutions, pos, posVoulu);
+//             }else if (!posVoulu and cartes[pos].getRot() == 3) {
+//                 cartes[pos].tourner();
+//
+//                 ++i;
+//                 for (Carte carte: cartes) {
+//                     if (carte.getId() == i) {
+//                         deplacer(cartes[0], carte);
+//                     }
+//                 }
+//                 recursif_new(cartes, solutions, pos, posVoulu);
+//
+//                 //Condition d'arrêt
+//                 if (cartes[0].getId() == 9) {
+//                     recursif_new(cartes, solutions, 10, 10);
+//                 }
+//             }
+//         }
+//      } else{
+//         //Tourne la carte
+//         cartes[pos].tourner();
+//
+//
+//         //     ATTENTION     //
+//
+//         if(cartes[pos].getRot() != 0)
+//            //Ressaye de la mettre à la même position
+//            recursif_new(cartes, solutions, pos, posVoulu);
+//
+//         //Essaye avec la carte suivante
+//         recursif_new(cartes, solutions, pos + 1, posVoulu);
+//         //Si aucune carte passe, il retente avec celle à la dernière pos bonne
+//         recursif_new(cartes, solutions, posVoulu + 1, posVoulu - 1);
+//      }
+//   }
+//}
 
 
 void algo_rec(vector<Carte>& cartes, size_t n) {
@@ -235,7 +235,14 @@ void algo_rec(vector<Carte>& cartes, size_t n) {
          controler = RIEN;
    }
 
-   for(size_t i = 0; i < NB_ROTATIONS; ++i) {
+   for(size_t j = 0; j < NB_ROTATIONS; ++j) {
+
+       for (Carte& carte : cartes) {
+           cout << carte << endl;
+       }
+
+       cout << endl;
+
       cartes[n].tourner();
 
       static unsigned listeAppels;
@@ -247,9 +254,14 @@ void algo_rec(vector<Carte>& cartes, size_t n) {
 
          for (size_t i = 0; i < n - 1; ++i) {
             if (n % 2)  // impair
-               swap(cartes[1], cartes[n - 1]);
+               swap(cartes[0], cartes[n - 1]);
             else  // pair
                swap(cartes[i], cartes[n - 1]);
+
+
+            //Il faut faire le contrôle et la coupe d'une branche au moment ou la carte en dernière position change
+
+
 
             algo_rec(cartes, n - 1);
          }

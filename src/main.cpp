@@ -31,7 +31,13 @@ int main() {
     solutions.reserve(1000);
 
     //Création du plateau de jeu
-    for(size_t i = 0; i < PIECES.size(); ++i){
+//    for(size_t i = 0; i < PIECES.size(); ++i){
+//        cartes.push_back(Carte ((int)(i + 1), PIECES[i]));
+//        //cartes[i] = (Carte(i+1, PIECES[i]));
+//    }
+
+    //Création test
+    for(size_t i = 0; i < 3; ++i){
         cartes.push_back(Carte ((int)(i + 1), PIECES[i]));
         //cartes[i] = (Carte(i+1, PIECES[i]));
     }
@@ -51,13 +57,13 @@ int main() {
 //    }
 
 
-    recursif_new(cartes,solutions,0,0);
-
-    for (vector<Carte> vCarte : solutions){
-        for(Carte carte : vCarte){
-            cout << carte << endl;
-        }
-    }
+//    recursif_new(cartes,solutions,0,0);
+//
+//    for (vector<Carte> vCarte : solutions){
+//        for(Carte carte : vCarte){
+//            cout << carte << endl;
+//        }
+//    }
 
 /*    for(Carte carte : cartes){
         cout << carte << endl;
@@ -78,6 +84,8 @@ int main() {
 //    for(Carte carte : resultat){
 //        cout << carte << endl;
 //    }
+
+    algo_rec(cartes, cartes.size());
 
     return EXIT_SUCCESS;
 }
