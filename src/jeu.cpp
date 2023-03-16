@@ -159,31 +159,39 @@ void recursif_new(vector<Carte>& cartes, vector<vector<Carte>>& solutions, size_
          //cout << "Deplace" << endl;
          deplacer(cartes[posVoulu], cartes[pos]);
 
+         for (Carte& carte : cartes){
+                 cout << carte << endl;
+         }
+         cout << endl;
+
          //if(pos == cartes.size() - 1){ test
           if(posVoulu == cartes.size() - 1){
              //Ajout du vecteur de cartes dans le vecteur
              solutions.push_back(cartes);
-         }
-         //Continue avec la carte suivante
-         recursif_new(cartes, solutions, posVoulu + 1, posVoulu + 1);
+         }else{
+              recursif_new(cartes, solutions, posVoulu + 1, posVoulu + 1);
 
-         if (!posVoulu and cartes[pos].getRot() != 3){
-             cartes[pos].tourner();
-             recursif_new(cartes, solutions, pos, posVoulu);
-         }else if (!posVoulu and cartes[pos].getRot() == 3){
-             cartes[pos].tourner();
+                //Continue avec la carte suivante
 
-             ++i;
-             for(Carte carte : cartes){
-                 if(carte.getId() == i){
-                     deplacer(cartes[0], carte);
+
+             if (!posVoulu and cartes[pos].getRot() != 3){
+                 cartes[pos].tourner();
+                 recursif_new(cartes, solutions, pos, posVoulu);
+             }else if (!posVoulu and cartes[pos].getRot() == 3) {
+                 cartes[pos].tourner();
+
+                 ++i;
+                 for (Carte carte: cartes) {
+                     if (carte.getId() == i) {
+                         deplacer(cartes[0], carte);
+                     }
                  }
-             }
-             recursif_new(cartes, solutions, pos, posVoulu);
+                 recursif_new(cartes, solutions, pos, posVoulu);
 
-             //Condition d'arrêt
-             if (cartes[0].getId() == 9) {
-                 recursif_new(cartes, solutions, 10, 10);
+                 //Condition d'arrêt
+                 if (cartes[0].getId() == 9) {
+                     recursif_new(cartes, solutions, 10, 10);
+                 }
              }
          }
       } else{

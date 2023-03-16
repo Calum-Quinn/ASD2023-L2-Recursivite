@@ -52,7 +52,7 @@ std::ostream& operator<<(std::ostream& os, const Carte& carte){
     for (size_t i = 0; i < carte.motifs.size(); ++i) {
         os << carte.motifs[i] << " ";
     }
-    os << carte.rotation << " " << carte.position << endl;
+    os << "rotation :" << carte.rot << " position :" << carte.position << endl;
 
     return os;
 }
