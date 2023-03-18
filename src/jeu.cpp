@@ -213,8 +213,7 @@ AControler posAControle(unsigned posCartes){
 //   }
 //}
 
-
-void algo_rec(vector<Carte>& cartes, size_t n) {
+void algo_rec(vector<Carte>& cartes, size_t n){
    AControler controler;
    switch(n) {
       case 1 :
@@ -237,13 +236,20 @@ void algo_rec(vector<Carte>& cartes, size_t n) {
 
    for(size_t j = 0; j < NB_ROTATIONS; ++j) {
 
-       for (Carte& carte : cartes) {
-           cout << carte << endl;
-       }
+      //if(!controle(cartes, n, n, controler))
+      //   continue;
+
+       //for (Carte& carte : cartes) {
+       //    cout << carte << endl;
+       //}
+
+       cout << cartes[n];
 
        cout << endl;
 
-      cartes[n].tourner();
+      cartes[n].rotate();
+
+
 
       static unsigned listeAppels;
 

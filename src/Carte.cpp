@@ -32,6 +32,25 @@ void Carte::tourner(){
     rot = ++rot % 4;
 }
 
+void Carte::rotate() {
+   //AttachementType tmp = motifs.back();/*on le mémorise avant qu'il ne disparaisse écrasé par table[1]*/
+
+   //for(size_t i = 0; i < motifs.size(); ++i)
+    //  motifs[i] = motifs[i+1];
+   std::rotate(motifs.rbegin(), motifs.rbegin() + 1, motifs.rend());
+
+   if(rotation == 'd')
+      rotation = 'a';
+   else{
+      ++rotation;
+   }
+
+   //for(size_t i = 0; i > 0; --i)
+   //   motifs[i] = motifs[i - 1];
+  // motifs.front() = tmp;
+
+}
+
 void Carte::reset() {
     rot = 0;
     position = id - 1;

@@ -29,6 +29,7 @@ public:
 
     Carte& operator= (const Carte& autre);
     void tourner();
+    void rotate();
     void reset();
 
 
