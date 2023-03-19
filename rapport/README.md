@@ -14,7 +14,9 @@ Ceci fait plus de 25'313'149 fois moins que le nombre de possibilités total.
 
 Le fabricant du jeu dis "des millions de possibilités et une seule solution", ce que nous avons pu démontrer comme faux. Selon un ordinateur il y a 8 possibilités distinctes au jeu, pour un humain ce serait plutôt 2. Pour chaque "vrai" solution au jeu nous pouvons tourner le plateau entier sur lui même pour donner la "même" solution avec une rotation différente.
 
-Voici la première solution.
+## Solutions
+
+### Première solution.
   * 1b 5d 4a 7a 6a 2a 8a 3a 9d
   
 ![image](https://user-images.githubusercontent.com/114938794/226186385-b6017038-1de1-44b6-bdcb-280357bd74a7.png)
@@ -24,7 +26,7 @@ Les solutions suivantes sont des rotations de 90° de la première solution,
 - 8d 7d 1a 3d 6d 5c 9c 2d 4d
 - 9b 3c 8c 2c 6c 7c 4c 5b 1d
   
-Voici la deuxième solution.  
+### Deuxième solution.  
   * 1c 9a 6b 2a 4b 8b 7a 3a 5a
   
 ![image](https://user-images.githubusercontent.com/114938794/226186414-05c6728b-52b9-4898-a135-638f791fdc97.png)
