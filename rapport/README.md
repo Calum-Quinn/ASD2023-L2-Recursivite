@@ -31,7 +31,7 @@ Les solutions suivantes sont des rotations de 90° de la première solution,
   
 ![image](https://user-images.githubusercontent.com/114938794/226186414-05c6728b-52b9-4898-a135-638f791fdc97.png)
   
-Les solutions suivantes sont des rotations de 90° de la première solution,
+Les solutions suivantes sont des rotations de 90° de la deuxième solution,
 - 5c 3c 7c 8d 4d 2c 6d 9c 1a
 - 6c 8c 5b 9b 4c 3b 1d 2b 7b
 - 7d 2d 1b 3d 4a 9d 5d 8a 6a
