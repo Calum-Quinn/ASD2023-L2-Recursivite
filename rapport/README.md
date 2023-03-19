@@ -3,7 +3,7 @@
 Nombre de possibilités de permutations pour 9 cartes avec chacun 4 rotations possibles:
 * Le nombre de possibilités pour placer les cartes sans prendre en compte les rotations est égal au nombre de cartes factoriel.
   * Donc dans notre cas 9! ou bien 362'880.
-* Le nombre de possibilités avec les rotations pour un seul placement des cartes et équivalent au nombre de rotations possibles à la puissance du nombre de carte.
+* Le nombre de possibilités avec les rotations pour un seul placement des cartes et équivalent au nombre de rotations possibles à la puissance du nombre de cartes.
   Car pour chaque rotation de la première carte la deuxième a 4 possibilités et pour chaque rotation de la deuxième carte la troisième a 4 possibilités et ainsi de suite.
   * Donc le nombre de possibilités avec les rotations pour un seul placement de cartes est équivalent à 4^9 ou bien 262'144.
 
