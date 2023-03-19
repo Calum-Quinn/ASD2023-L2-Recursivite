@@ -7,4 +7,8 @@ compare vos résultats au texte commercial de Djeco : "des millions de possibili
 
 Nombre de possibilités de permutations pour 9 cartes avec chacun 4 rotations possibles:
 * Le nombre de possibilités pour placer les cartes sans prendre en compte les rotations est égal aux nombres de cartes factoriel
-  * Donc dans notre cas 9! ou  bien 362 880
+  * Donc dans notre cas 9! ou bien 362'880.
+* Le nombre de possibilités de avec les rotations pour un seul placement des cartes et équivalent au nombre de rotations possibles puissance le nombre de carte.
+  Car pour chaque rotation de la première carte la deuxième a 4 possibilités et pour chaque rotation de la deuxième carte la troisième a 4 possibilités et ainsi de suite.
+  * Donc le nombre de possibilités avec les rotations pour un seul placement de cartes est équivalent à 4^9 ou bien 262'144.
+Le nombre total de possibilités revient donc à multiplier le nombre de rotations possibles par le nmbre de placement de cartes ce qui revient à 362'880 * 262'144 donc 95'126'814'720 possibilités de placement différents.
