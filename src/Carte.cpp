@@ -8,18 +8,16 @@ Compilateurs   : Apple clang version 14.0.0 (clang-1400.0.29.102) (Dario)
                : Mingw-w64 g++ 12.2.0 (Calum et Ewan)
 ----------------------------------------------------------------------------------- */
 
-#include "Carte.h"
-
 #include <algorithm>
+
+#include "Carte.h"
 
 using namespace std;
 
-Carte::Carte(const int id, Piece motifs) {
+Carte::Carte(const unsigned id, Piece motifs) {
     this->id = id;
-    this->rotation = 'a';
     this->rot = 0;
     this->motifs = motifs;
-//    this->position = 9;
     this->position = id - 1;
 }
 
@@ -32,14 +30,8 @@ void Carte::tourner(){
     rot = ++rot % 4;
 }
 
-void Carte::reset() {
-    rot = 0;
-    position = id - 1;
-}
-
 Carte& Carte::operator= (const Carte& autre) {
     this->motifs = autre.motifs;
-    this->rotation = autre.rotation;
     this->rot = autre.rot;
     this->id = autre.id;
 
@@ -49,8 +41,8 @@ Carte& Carte::operator= (const Carte& autre) {
 std::ostream& operator<<(std::ostream& os, const Carte& carte){
 
     os << "id " << carte.getId() << " : " ;
-    for (size_t i = 0; i < carte.motifs.size(); ++i) {
-        os << carte.motifs[i] << " ";
+    for (int motif : carte.motifs) {
+        os << motif << " ";
     }
     os << "rotation :" << carte.rot << " position :" << carte.position << endl;
 

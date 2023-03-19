@@ -2,7 +2,7 @@
 Nom du fichier : controle.cpp (xxx = h ou cpp)
 Auteur(s)      : Ewan Mariaux, Calum Quinn, Dario Vasques
 Date creation  : 09.03.2023
-Description    : Programme principal
+Description    : Algorithme de contrôle pour savoir si deux cartes correspondent
 Remarque(s)    : <à compléter>
 Compilateurs   : Apple clang version 14.0.0 (clang-1400.0.29.102) (Dario)
                : Mingw-w64 g++ 12.2.0 (Calum et Ewan)
@@ -12,41 +12,40 @@ Compilateurs   : Apple clang version 14.0.0 (clang-1400.0.29.102) (Dario)
 
 using namespace std;
 
-bool controle(vector<Carte>& cartes, size_t posMoi, size_t posLui, AControler controler) {
+bool controle(vector<Carte>& plateau, size_t posVoulu, Carte& carte, int rotation, AControler controler) {
 
-    //Controle la carte à sa gauche
+    //Controle la carte à gauche
     if (controler == AControler::GAUCHE) {
-        if (!check(cartes[posMoi], cartes[posLui - 1], AGAUCHE, ADROITE))
+        if (!check(plateau, posVoulu, carte, AGAUCHE, ADROITE, rotation))
             return false;
     }
-    //Controle la carte au dessus
+        //Controle la carte au dessus
     else if (controler == AControler::HAUT) {
-        if (!check(cartes[posMoi], cartes[posLui - 3], DESSUS, DESSOUS))
+        if (!check(plateau, posVoulu, carte, DESSUS, DESSOUS, rotation))
             return false;
     }
-    //Controle les cartes à gauche et au dessus
+        //Controle les cartes à gauche et au dessus
     else if (controler == AControler::GAUCHEHAUT) {
-        if (!(check(cartes[posMoi], cartes[posLui - 1], AGAUCHE, ADROITE)
-              and check(cartes[posMoi], cartes[posLui - 3], DESSUS, DESSOUS)))
+        if (!(check(plateau, posVoulu, carte, AGAUCHE, ADROITE, rotation)
+              and check(plateau, posVoulu, carte, DESSUS, DESSOUS, rotation)))
             return false;
     }
     return true;
- }
+}
 
-bool check(Carte& carte1, Carte& carte2, const int moi, const int lui) {
+bool check(vector<Carte>& plateau, size_t posVoulu, Carte& carte, const int monCote, const int sonCote, int rotation) {
 
     int decalage;
 
     //Défini le décalage du motif correspondant
-    if ((carte1.getMotifs()[(moi + carte1.getRot()) % 4] % 2) != 0)
+    if ((carte.getMotifs()[size_t((monCote + rotation) % 4)] % 2) != 0)
         decalage = 1;
     else
         decalage = -1;
 
     //Controle si le motif de la pièce correspond à l'autre
-    if (carte1.getMotifs()[(moi + carte1.getRot()) % 4] != (carte2.getMotifs()[(lui + carte2.getRot()) % 4] + decalage))
+    if (carte.getMotifs()[size_t((monCote + rotation) % 4)] != (plateau[size_t(posVoulu + size_t(monCote + sonCote) - 5)].getMotifs()[size_t((sonCote + plateau[size_t(posVoulu + size_t(monCote + sonCote) - 5)].getRot()) % 4)] + decalage))
         return false;
 
-   //cout << carte1.getId() << " rot" << carte1.getRot() << " avec " << carte2.getId() << " rot" << carte2.getRot() << endl;
     return true;
 }

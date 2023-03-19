@@ -3,4 +3,4 @@ project(ASD2022-L2-Recursivite)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wconversion -Wsign-conversion -pedantic")
-add_executable(L2-recursivite main.cpp pieces.cpp deplacer.cpp deplacer.h Carte.cpp Carte.h controle.cpp controle.h jeu.cpp jeu.h)
+add_executable(L2-recursivite main.cpp pieces.cpp Carte.cpp Carte.h controle.cpp controle.h jeu.cpp jeu.h)
