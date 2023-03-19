@@ -9,7 +9,7 @@ Nombre de possibilités de permutations pour 9 cartes avec chacun 4 rotations po
 
 Le nombre total de possibilités revient donc à multiplier le nombre de rotations possibles par le nombre de placements de cartes ce qui revient à 362'880 * 262'144 donc à 95'126'814'720 possibilités de placement différents des 9 cartes avec les rotations.
 
-L'algorithm que nous avons créés fait seulement 3'758 appels récursifs pour contrôler les possibilités nécessaires à trouver toutes les solutions au jeu.
+L'algorithme que nous avons créés fait seulement 3'758 appels récursifs pour contrôler les possibilités nécessaires à trouver toutes les solutions au jeu.
 Ceci fait plus de 25'313'149 fois moins que le nombre de possibilités total.
 
 Le fabricant du jeu dis "des millions de possibilités et une seule solution", ce que nous avons pu démontrer comme faux. Selon un ordinateur il y a 8 possibilités distinctes au jeu, pour un humain ce serait plutôt 2. Pour chaque "vrai" solution au jeu nous pouvons tourner le plateau entier sur lui même pour donner la "même" solution avec une rotation différente.
